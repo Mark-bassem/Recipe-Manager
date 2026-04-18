@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="Login | The Recipe Manager">Login | The Recipe Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav aria-label="Primary">
+        <h2 data-i18n="The Recipe Manager">The Recipe Manager</h2>
+        <div class="nav-links">
+            <a href="login.html" aria-current="page" data-i18n="Login">Login</a>
+            <a href="signup.html" data-i18n="Sign Up">Sign Up</a>
+            <button id="langToggle" class="toggle-btn" onclick="toggleLang()">EN</button>
+            <button id="themeToggle" class="toggle-btn" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <main class="auth-wrap">
+        <section class="form auth-form" aria-label="Login form">
+            <h1 data-i18n="Welcome Back">Welcome Back</h1>
+
+            <label for="loginEmail" data-i18n="Email">Email</label>
+            <input id="loginEmail" type="email" placeholder="Email" data-i18n-placeholder="Email" autocomplete="email">
+
+            <label for="loginPassword" data-i18n="Password">Password</label>
+            <input id="loginPassword" type="password" placeholder="Password" data-i18n-placeholder="Password" autocomplete="current-password">
+
+            <button type="button" onclick="login()" data-i18n="Login">Login</button>
+            <p id="authMessage" class="auth-message" aria-live="polite"></p>
+            <p class="auth-switch">
+                <span data-i18n="No account yet?">No account yet?</span>
+                <a href="signup.html" data-i18n="Create one now">Create one now</a>
+            </p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
