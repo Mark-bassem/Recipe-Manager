@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="The Recipe Manager">The Recipe Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav aria-label="Primary">
+        <h2 data-i18n="The Recipe Manager">The Recipe Manager</h2>
+        <div class="nav-links">
+            <a href="main.html" aria-current="page" data-i18n="Home">Home</a>
+            <a href="favourites.html" data-i18n="Favourites">Favourites</a>
+            <a href="add-recipe.html" data-i18n="Add Recipe">Add Recipe</a>
+            <button id="logoutBtn" class="toggle-btn" onclick="logout()" data-i18n="Logout">Logout</button>
+            <button id="langToggle" class="toggle-btn" onclick="toggleLang()">EN</button>
+            <button id="themeToggle" class="toggle-btn" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <header>
+        <h1 data-i18n="Find Recipes From Your Ingredients">Find Recipes From Your Ingredients</h1>
+    </header>
+
+    <main>
+        <section class="input-section" aria-label="Ingredient search controls">
+            <label class="sr-only" for="ingredientInput" data-i18n="Ingredient">Ingredient</label>
+            <input type="text" id="ingredientInput" placeholder="Add ingredient ..." data-i18n-placeholder="Add ingredient ..." autocomplete="off">
+            <button type="button" onclick="RecipeManager.addIngredient()" data-i18n="Add">Add</button>
+            <button type="button" onclick="RecipeManager.searchRecipes()" data-i18n="Search">Search</button>
+            <button type="button" onclick="RecipeManager.clearIngredients()" class="clear-btn" data-i18n="Clear All">Clear All</button>
+        </section>
+
+        <section id="ingredientList" aria-live="polite" aria-label="Selected ingredients"></section>
+
+        <section class="ai-planner" aria-label="Weekly AI meal planner">
+            <h2 data-i18n="AI Weekly Meal Plan">AI Weekly Meal Plan</h2>
+            <p data-i18n="Generate a 7-day meal plan using your current ingredients and your preferences.">Generate a 7-day meal plan using your current ingredients and your preferences.</p>
+            <label class="sr-only" for="aiPreferences" data-i18n="Meal plan preferences">Meal plan preferences</label>
+            <textarea id="aiPreferences" rows="4" placeholder="Example: high protein, budget friendly, weight loss, no seafood" data-i18n-placeholder="Example: high protein, budget friendly, weight loss, no seafood"></textarea>
+            <label for="aiWeight">Weight (kg):</label>
+            <input type="number" id="aiWeight" min="30" max="200" step="0.1" placeholder="70" data-i18n-placeholder="Weight (kg)"> 
+            <button type="button" id="aiGenerateBtn" onclick="RecipeManager.generateMealPlan()" data-i18n="Generate Weekly Plan">Generate Weekly Plan</button>
+            <div id="aiPlanResult" class="ai-result" aria-live="polite"></div>
+        </section>
+
+        <section id="recipesContainer" aria-live="polite" aria-label="Recipe results"></section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
