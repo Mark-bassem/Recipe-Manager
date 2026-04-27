@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="The Recipe Manager">What's in the Fridge</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav aria-label="Primary" data-i18n-aria-label="Primary">
+        <h2 data-i18n="The Recipe Manager">What's in the Fridge</h2>
+        <div class="nav-links">
+            <a href="main.html" aria-current="page" data-i18n="Home">Home</a>
+            <a href="favourites.html" data-i18n="Favourites">Favourites</a>
+            <a href="add-recipe.html" data-i18n="Add Recipe">Add Recipe</a>
+            <a href="profile.html" data-i18n="Profile">Profile</a>
+            <button id="logoutBtn" class="toggle-btn" onclick="logout()" data-i18n="Logout">Logout</button>
+            <button id="langToggle" class="toggle-btn" onclick="toggleLang()">EN</button>
+            <button id="themeToggle" class="toggle-btn" onclick="toggleTheme()">🌙</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" data-i18n-aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <header>
+        <h1 data-i18n="Find Recipes From Your Ingredients">Find Recipes From Your Ingredients</h1>
+    </header>
+
+    <main>
+        <section class="input-section" aria-label="Ingredient search controls" data-i18n-aria-label="Ingredient search controls">
+            <label class="sr-only" for="searchInput" data-i18n="Ingredient">Ingredient</label>
+            <input type="text" id="searchInput" placeholder="Search by ingredient ..." data-i18n-placeholder="Search by ingredient ..." autocomplete="off">
+            <button type="button" onclick="RecipeManager.searchRecipes()" data-i18n="Search">Search</button>
+            <button type="button" onclick="RecipeManager.clearIngredients()" class="clear-btn" data-i18n="Clear All">Clear All</button>
+        </section>
+
+        <section id="ingredientList" aria-live="polite" aria-label="Selected ingredients" data-i18n-aria-label="Selected ingredients"></section>
+
+        <section id="recipesContainer" aria-live="polite" aria-label="Recipe search results" data-i18n-aria-label="Recipe search results"></section>
+
+        <section class="ai-planner" aria-label="Weekly AI meal planner" data-i18n-aria-label="Weekly AI meal planner">
+            <h2 data-i18n="AI Weekly Meal Plan">AI Weekly Meal Plan</h2>
+            <p data-i18n="Generate a 7-day meal plan using your current ingredients and your preferences.">Generate a 7-day meal plan using your current ingredients and your preferences.</p>
+            <label class="sr-only" for="aiPreferences" data-i18n="Meal plan preferences">Meal plan preferences</label>
+            <textarea id="aiPreferences" rows="4" placeholder="Example: high protein, budget friendly, weight loss, no seafood" data-i18n-placeholder="Example: high protein, budget friendly, weight loss, no seafood"></textarea>
+            <button type="button" id="aiGenerateBtn" onclick="RecipeManager.generateMealPlan()" data-i18n="Generate Weekly Plan">Generate Weekly Plan</button>
+            <div id="aiPlanResult" class="ai-result" aria-live="polite"></div>
+        </section>
+
+        <section id="egyptianSection" class="egyptian-section" aria-label="Egyptian cuisine" data-i18n-aria-label="Egyptian cuisine">
+            <div class="egyptian-header">
+                <h2 data-i18n="Egyptian Cuisine">🇪🇬 Egyptian Cuisine</h2>
+                <p data-i18n="Authentic Egyptian recipes passed down through generations.">Authentic Egyptian recipes passed down through generations.</p>
+            </div>
+            <div id="egyptianContainer" aria-live="polite"></div>
+        </section>
+
+        <section id="saudiSection" class="saudi-section" aria-label="Saudi cuisine" data-i18n-aria-label="Saudi cuisine">
+            <div class="saudi-header">
+                <h2 data-i18n="Saudi Cuisine">🇸🇦 Saudi Cuisine</h2>
+                <p data-i18n="Traditional Saudi flavors from the heart of Arabia.">Traditional Saudi flavors from the heart of Arabia.</p>
+            </div>
+            <div id="saudiContainer" aria-live="polite"></div>
+        </section>
+
+        <section id="italianSection" class="italian-section" aria-label="Italian cuisine" data-i18n-aria-label="Italian cuisine">
+            <div class="italian-header">
+                <h2 data-i18n="Italian Cuisine">🇮🇹 Italian Cuisine</h2>
+                <p data-i18n="Classic Italian dishes made with passion and tradition.">Classic Italian dishes made with passion and tradition.</p>
+            </div>
+            <div id="italianContainer" aria-live="polite"></div>
+        </section>
+
+        <section id="spanishSection" class="spanish-section" aria-label="Spanish cuisine" data-i18n-aria-label="Spanish cuisine">
+            <div class="spanish-header">
+                <h2 data-i18n="Spanish Cuisine">🇪🇸 Spanish Cuisine</h2>
+                <p data-i18n="Vibrant Spanish flavors from tapas to traditional feasts.">Vibrant Spanish flavors from tapas to traditional feasts.</p>
+            </div>
+            <div id="spanishContainer" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-i18n="About">About</h3>
+                <p data-i18n="Discover delicious recipes from around the world with our AI-powered recipe finder. Find meals using ingredients you already have!">Discover delicious recipes from around the world with our AI-powered recipe finder. Find meals using ingredients you already have!</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="Quick Links">Quick Links</h3>
+                <a href="main.html" data-i18n="Home">Home</a>
+                <a href="favourites.html" data-i18n="Favourites">Favourites</a>
+                <a href="add-recipe.html" data-i18n="Add Recipe">Add Recipe</a>
+                <a href="profile.html" data-i18n="Profile">Profile</a>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="Features">Features</h3>
+                <p data-i18n="AI Meal Planning">AI Meal Planning</p>
+                <p data-i18n="Global Cuisine">Global Cuisine</p>
+                <p data-i18n="Ingredient Matching">Ingredient Matching</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="© 2026 What's in the Fridge. All rights reserved.">© 2026 What's in the Fridge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
